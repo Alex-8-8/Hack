@@ -29,18 +29,36 @@ export default class App extends React.Component {
     });
   }
 
+  resetToCurrentDate = () => {
+    this.setState({
+      month: dateNow.getMonth() + 1,
+      year: dateNow.getFullYear(),
+    })
+  }
+
   render() {
     const { month, year } = this.state;
 
     return (
       <div className="App">
+<<<<<<< HEAD
         <Actions monthes={monthes} month={month} changeMonth={this.changeMonth} changeYear={this.changeYear} />
+=======
+        <Actions monthes={monthes} year={year} month={month} changeMonth={this.changeMonth} changeYear={this.changeYear}/>
+>>>>>>> 0e6b7804c66a6f73511f1fdfc2079b6eb92a7365
         <Calendar
           month={month}
           year={year}
           weakDays={weakDays}
           monthes={monthes}
         />
+        <button 
+          className="button-reset"
+          type="button"
+          onClick={this.resetToCurrentDate}
+        >
+          Current Month
+        </button>
       </div>
 
     );
