@@ -5,17 +5,12 @@ import './CalendarBody.scss';
 
 const CalendarBody = ({ month, year }) => {
   const daysNumber = new Date(year, month, 0).getDate();
-  const monthdays = Array.from({ length: [daysNumber] }, (item, index) => index + 1);
+  const monthdays = Array.from({ length: [daysNumber] }, (_, index) => index + 1);
   let fistDayOfWeek = new Date(`${year}-${month}-01`).getDay();
   if (fistDayOfWeek === 0) {
     fistDayOfWeek = 7;
   }
-  const emptyCells = Array.from({ length: [fistDayOfWeek - 1] }, (item, index) => index + 1);
-  const fullWeek = Math.floor((daysNumber - fistDayOfWeek - 1) / 7);
-  const restDays = 7 - (daysNumber - fullWeek * 7 - (fistDayOfWeek - 1));
-  const endEmptyCells = Array.from({ length: [fistDayOfWeek - 1] }, (item, index) => index + 1);
-
-  
+  const emptyCells = Array.from({ length: [fistDayOfWeek - 1] }, (_, index) => index + 1);
 
   return (
     <>
