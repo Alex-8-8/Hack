@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.scss';
 import Calendar from './components/Calendar/Calendar';
+import days from './api/days';
+import monthes from './api/monthes';
 
 const dateNow = new Date();
 
