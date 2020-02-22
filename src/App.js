@@ -1,15 +1,39 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.scss';
 import Calendar from './components/Calendar/Calendar';
-import days from './api/days';
-import monthes from './api/monthes';
+import { Actions } from './components/Actions/Actions';
+
+const weakDays = ['mon', 'tue', 'wed', 'thir', 'fri', 'sat', 'sun'];
+const monthes = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December',
+];
 
 const dateNow = new Date();
 
-export default class App extends Component {
+export default class App extends React.Component {
   state = {
-    month: dateNow.getMonth(),
+    month: dateNow.getMonth() + 1,
     year: dateNow.getFullYear(),
+  }
+
+  changeMonth = (month) => {
+    this.setState({
+      month,
+    });
+  }
+
+  changeYear = (year) => {
+    this.setState({
+      year,
+    });
+  }
+
+  resetToCurrentDate = () => {
+    this.setState({
+      month: dateNow.getMonth() + 1,
+      year: dateNow.getFullYear(),
+    });
   }
 
   render() {
@@ -17,7 +41,20 @@ export default class App extends Component {
 
     return (
       <div className="App">
-        <Calendar month={month} year={year} />
+        <Actions monthes={monthes} year={year} month={month} changeMonth={this.changeMonth} changeYear={this.changeYear} />
+        <Calendar
+          month={month}
+          year={year}
+          weakDays={weakDays}
+          monthes={monthes}
+        />
+        <button
+          className="button-reset"
+          type="button"
+          onClick={this.resetToCurrentDate}
+        >
+          Current Month
+        </button>
       </div>
 
     );
