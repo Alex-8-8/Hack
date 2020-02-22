@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 import Calendar from './components/Calendar/Calendar';
-import ChangeMonth from './components/ChangeMonth/ChangeMonth';
+import { Actions } from './components/Actions/Actions';
 
 const weakDays = ['mon', 'tue', 'wed', 'thir', 'fri', 'sat', 'sun'];
 const monthes = [
@@ -17,12 +17,24 @@ export default class App extends React.Component {
     year: dateNow.getFullYear(),
   }
 
+  changeMonth = (month) => {
+    this.setState({
+      month,
+    });
+  }
+
+  changeYear = (year) => {
+    this.setState({
+      year,
+    });
+  }
+
   render() {
     const { month, year } = this.state;
 
     return (
       <div className="App">
-        <ChangeMonth />
+        <Actions monthes={monthes} month={month} changeMonth={this.changeMonth} changeYear={this.changeYear} />
         <Calendar
           month={month}
           year={year}
