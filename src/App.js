@@ -20,20 +20,20 @@ export default class App extends React.Component {
   changeMonth = (month) => {
     this.setState({
       month,
-    })
+    });
   }
 
   changeYear = (year) => {
     this.setState({
       year,
-    })
+    });
   }
 
   resetToCurrentDate = () => {
     this.setState({
       month: dateNow.getMonth() + 1,
       year: dateNow.getFullYear(),
-    })
+    });
   }
 
   render() {
@@ -41,14 +41,14 @@ export default class App extends React.Component {
 
     return (
       <div className="App">
-        <Actions monthes={monthes} year={year} month={month} changeMonth={this.changeMonth} changeYear={this.changeYear}/>
+        <Actions monthes={monthes} year={year} month={month} changeMonth={this.changeMonth} changeYear={this.changeYear} />
         <Calendar
           month={month}
           year={year}
           weakDays={weakDays}
           monthes={monthes}
         />
-        <button 
+        <button
           className="button-reset"
           type="button"
           onClick={this.resetToCurrentDate}
