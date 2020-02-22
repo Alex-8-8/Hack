@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
-
-import users from './api/users';
+import days from './api/days';
+import monthes from './api/monthes';
 
 function App() {
   return (
@@ -10,7 +10,6 @@ function App() {
 
       <p>
         <span>Users: </span>
-        {users.length}
       </p>
     </div>
   );
