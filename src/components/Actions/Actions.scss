@@ -7,7 +7,8 @@
   &__select,
   &__input {
     outline: none;
-    border: 1px solid #000;
+    border: none;
+    background-color: #9993ed;
     border-radius: 25px;
     max-width: 125px;
     height: 40px;
@@ -19,18 +20,22 @@
   // &__input {
   //   // width: 150px;
   // }
-  &__select {
-    background-color: #b8b4fa;
-  }
+  // &__select {
+
+  // }
   &__button {
     outline: none;
     width: 25px;
     line-height: 25px;
-    background-color: #b8b4fa;
+    background-color: #9993ed;
     font-size: 20px;
     border-radius: 25px;
     text-align: center;
-    border: 1px solid #000;
+    border: none;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      background-color: #7c74fc;
+  }
   }
   // &__button:nth-child(2) {
   //   border-top-left-radius: 25px;

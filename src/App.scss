@@ -12,30 +12,49 @@
 
 .list-of-months {
   margin: 80px;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   display: grid;
   grid-template-columns: repeat(auto-fill, (100%/3));
   row-gap: 50px;
+  &__select {
+    position: absolute;
+    width: 330px;
+    height: 40px;
+    top: 20px;
+    outline: none;
+    right: -50px;
+    transform: translateX(-50%);
+    background-color: #9993ed;
+    padding-left: 4.2%;
+    font-size: 24px;
+    border-radius: 25px;
+    max-width: 200px;
+  }
 }
 
 .current-month {
-  margin: 15px 40px 0;
+  margin: 21px 40px 0;
   max-width: 350px;
 }
 
 .button-reset {
   display: block;
-
+  margin: 10px auto;
   margin-top: 10px;
   width: 250px;
   height: 40px;
 
   font-size: 24px;
 
-  background-color: #b8b4fa;
+  background-color: #9993ed;
   border-radius: 20px;
   border: none;
   outline: none;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    color: #eec01a;
+    background-color: #7c74fc;
+  }
 }
