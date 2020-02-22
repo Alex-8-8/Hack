@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.scss';
+import Calendar from './components/Calendar/Calendar';
 
-import users from './api/users';
+const dateNow = new Date();
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Add todo form</h1>
+export default class App extends Component {
+  state = {
+    month: dateNow.getMonth(),
+    year: dateNow.getFullYear(),
+  }
 
-      <p>
-        <span>Users: </span>
-        {users.length}
-      </p>
-    </div>
-  );
+  render() {
+    const { month, year } = this.state;
+
+    return (
+      <div className="App">
+        <Calendar month={month} year={year} />
+      </div>
+
+    );
+  }
 }
-
-export default App;
