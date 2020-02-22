@@ -2,6 +2,9 @@ import React from 'react';
 import './App.scss';
 import { Veiw } from './components/View/View';
 
+import Calendar from './components/Calendar/Calendar';
+import { Actions } from './components/Actions/Actions';
+
 const weakDays = ['mon', 'tue', 'wed', 'thir', 'fri', 'sat', 'sun'];
 const monthes = [
   'January', 'February', 'March', 'April', 'May', 'June',
@@ -26,6 +29,25 @@ export default class App extends React.Component {
     });
   }
 
+  changeMonth = (month) => {
+    this.setState({
+      month,
+    });
+  }
+
+  changeYear = (year) => {
+    this.setState({
+      year,
+    });
+  }
+
+  resetToCurrentDate = () => {
+    this.setState({
+      month: dateNow.getMonth() + 1,
+      year: dateNow.getFullYear(),
+    });
+  }
+
   render() {
     const { month, year, selectVeiw } = this.state;
 
@@ -43,6 +65,26 @@ export default class App extends React.Component {
           monthes={monthes}
           selectVeiw={selectVeiw}
         />
+        <Actions
+          monthes={monthes}
+          year={year}
+          month={month}
+          changeMonth={this.changeMonth}
+          changeYear={this.changeYear}
+        />
+        <Calendar
+          month={month}
+          year={year}
+          weakDays={weakDays}
+          monthes={monthes}
+        />
+        <button
+          className="button-reset"
+          type="button"
+          onClick={this.resetToCurrentDate}
+        >
+          Current Month
+        </button>
       </div>
 
     );

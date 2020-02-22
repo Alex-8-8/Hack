@@ -9,6 +9,11 @@ const CalendarBody = ({ month, year }) => {
     { length: [daysNumber] }, (item, index) => index + 1,
   );
   let fistDayOfWeek = new Date(`${year}-${month}-01`).getDay();
+
+  if (fistDayOfWeek === 0) {
+    fistDayOfWeek = 7;
+  }
+
   const emptyCells = Array.from(
     { length: [fistDayOfWeek - 1] }, (item, index) => index + 1,
   );
@@ -17,10 +22,6 @@ const CalendarBody = ({ month, year }) => {
   const endEmptyCells = Array.from(
     { length: [restDays] }, (item, index) => index + 1,
   );
-
-  if (fistDayOfWeek === 0) {
-    fistDayOfWeek = 7;
-  }
 
   return (
     <>
