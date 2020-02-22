@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CalendarHeader from './CalendarHeader';
-import CalendarBody from './CalendarBody';
+import CalendarHeader from './CalendarHeader/CalendarHeader';
+import CalendarBody from './CalendarBody/CalendarBody';
 
-const Calendar = ({ month, year }) => (
+import './Calendar.scss';
+
+const Calendar = ({ month, year, weakDays, monthes }) => (
   <div className="calendar">
-    <CalendarHeader />
+    <CalendarHeader weakDays={weakDays} />
     <CalendarBody month={month} year={year} />
   </div>
 );
@@ -13,6 +15,12 @@ const Calendar = ({ month, year }) => (
 Calendar.propTypes = {
   month: PropTypes.number.isRequired,
   year: PropTypes.number.isRequired,
+  weakDays: PropTypes.arrayOf(
+    PropTypes.string.isRequired,
+  ).isRequired,
+  monthes: PropTypes.arrayOf(
+    PropTypes.string.isRequired,
+  ).isRequired,
 };
 
 export default Calendar;

@@ -1,14 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.scss';
 import Calendar from './components/Calendar/Calendar';
-import days from './api/days';
-import monthes from './api/monthes';
+
+const weakDays = ['mon', 'tue', 'wed', 'thir', 'fri', 'sat', 'sun'];
+const monthes = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December',
+];
 
 const dateNow = new Date();
 
-export default class App extends Component {
+export default class App extends React.Component {
   state = {
-    month: dateNow.getMonth(),
+    month: dateNow.getMonth() + 1,
     year: dateNow.getFullYear(),
   }
 
@@ -17,7 +21,12 @@ export default class App extends Component {
 
     return (
       <div className="App">
-        <Calendar month={month} year={year} />
+        <Calendar
+          month={month}
+          year={year}
+          weakDays={weakDays}
+          monthes={monthes}
+        />
       </div>
 
     );
