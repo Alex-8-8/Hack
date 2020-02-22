@@ -33,7 +33,7 @@ export default class App extends React.Component {
     this.setState({
       month: dateNow.getMonth() + 1,
       year: dateNow.getFullYear(),
-    })
+    });
   }
 
   render() {
@@ -41,18 +41,14 @@ export default class App extends React.Component {
 
     return (
       <div className="App">
-<<<<<<< HEAD
-        <Actions monthes={monthes} month={month} changeMonth={this.changeMonth} changeYear={this.changeYear} />
-=======
-        <Actions monthes={monthes} year={year} month={month} changeMonth={this.changeMonth} changeYear={this.changeYear}/>
->>>>>>> 0e6b7804c66a6f73511f1fdfc2079b6eb92a7365
+        <Actions monthes={monthes} year={year} month={month} changeMonth={this.changeMonth} changeYear={this.changeYear} />
         <Calendar
           month={month}
           year={year}
           weakDays={weakDays}
           monthes={monthes}
         />
-        <button 
+        <button
           className="button-reset"
           type="button"
           onClick={this.resetToCurrentDate}

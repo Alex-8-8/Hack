@@ -9,18 +9,18 @@ const CalendarBody = ({ month, year }) => {
     { length: [daysNumber] }, (item, index) => index + 1,
   );
   let fistDayOfWeek = new Date(`${year}-${month}-01`).getDay();
-  const emptyCells = Array.from(
-    { length: [fistDayOfWeek - 1] }, (item, index) => index + 1,
-  );
+
+  if (fistDayOfWeek === 0) {
+    fistDayOfWeek = 7;
+  }
+
   const fullWeek = Math.floor((daysNumber - fistDayOfWeek - 1) / 7);
   const restDays = daysNumber - fullWeek * 7 - (7 - fistDayOfWeek - 1) - 7;
   const endEmptyCells = Array.from(
     { length: [restDays] }, (item, index) => index + 1,
   );
 
-  if (fistDayOfWeek === 0) {
-    fistDayOfWeek = 7;
-  }
+  const emptyCells = Array.from({ length: [fistDayOfWeek - 1] }, (_, index) => index + 1);
 
   return (
     <>
