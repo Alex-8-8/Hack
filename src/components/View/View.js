@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Calendar from '../Calendar/Calendar';
 import CalendarHeader from '../Calendar/CalendarHeader/CalendarHeader';
+import './View.scss';
 
 export const Veiw = ({ month, year, weakDays, monthes, selectVeiw }) => {
   if (selectVeiw === 'Day') {
@@ -54,13 +55,15 @@ export const Veiw = ({ month, year, weakDays, monthes, selectVeiw }) => {
     ).map(day => day + startWeek);
 
     return (
-      <div className="calendar">
+      <div className="calendar calendar-week">
         <CalendarHeader weakDays={weakDays} />
-        {needWeek.map(day => (
-          <div key={day} className="calendar__cell">
-            {day}
-          </div>
-        ))}
+        <div className="calendar__week">
+          {needWeek.map(day => (
+            <div key={day} className="calendar__cell">
+              {day}
+            </div>
+          ))}
+        </div>
       </div>
     );
   }

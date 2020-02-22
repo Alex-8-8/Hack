@@ -49,15 +49,6 @@ export class Actions extends Component {
 
         return (
           <div className="action">
-            <select
-              value={month}
-              onChange={this.handleMonthChange}
-              className="action__select"
-            >
-              {monthes.map((mon, index) => (
-                <option value={index + 1} key={mon}>{mon}</option>
-              ))}
-            </select>
             <input
               type="number"
               value={year}
@@ -71,6 +62,15 @@ export class Actions extends Component {
             >
               {`<`}
             </button>
+            <select
+              value={month}
+              onChange={this.handleMonthChange}
+              className="action__select"
+            >
+              {monthes.map((mon, index) => (
+                <option value={index + 1} key={mon}>{mon}</option>
+              ))}
+            </select>
             <button
               type="button"
               onClick={this.handleNext}

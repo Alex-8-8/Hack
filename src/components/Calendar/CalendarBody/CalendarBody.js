@@ -17,7 +17,7 @@ const CalendarBody = ({ month, year }) => {
   );
   const emptyCells = Array.from({ length: [fistDayOfWeek - 1] }, (_, index) => index + 1);
   return (
-    <>
+    <div className="calendar-section">
       {emptyCells.map(
         day => <div key={day} className="calendar__cell">{' '}</div>,
       )}
@@ -31,7 +31,7 @@ const CalendarBody = ({ month, year }) => {
       {endEmptyCells.map(
         day => <div key={day} className="calendar__cell">{' '}</div>,
       )}
-    </>
+    </div>
   );
 };
 CalendarBody.propTypes = {

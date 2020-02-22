@@ -3,9 +3,10 @@ import './App.scss';
 import { Veiw } from './components/View/View';
 
 import Calendar from './components/Calendar/Calendar';
+import { Year } from './components/Year/Year';
 import { Actions } from './components/Actions/Actions';
 
-const weakDays = ['mon', 'tue', 'wed', 'thir', 'fri', 'sat', 'sun'];
+const weakDays = ['mon', 'tue', 'wed', 'thurs', 'fri', 'sat', 'sun'];
 const monthes = [
   'January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December',
@@ -53,38 +54,48 @@ export default class App extends React.Component {
 
     return (
       <div className="App">
-        <select onChange={this.selected}>
+      {/* <select onChange={this.selected}>
           {selectBtn.map(
             select => <option value={select} key={select}>{select}</option>,
           )}
-        </select>
-        <Veiw
-          month={month}
-          year={year}
-          weakDays={weakDays}
-          monthes={monthes}
-          selectVeiw={selectVeiw}
-        />
-        <Actions
-          monthes={monthes}
-          year={year}
-          month={month}
-          changeMonth={this.changeMonth}
-          changeYear={this.changeYear}
-        />
-        <Calendar
-          month={month}
-          year={year}
-          weakDays={weakDays}
-          monthes={monthes}
-        />
-        <button
-          className="button-reset"
-          type="button"
-          onClick={this.resetToCurrentDate}
-        >
-          Current Month
-        </button>
+        </select> */}
+
+        <div className="current-month">
+          <Actions
+            monthes={monthes}
+            year={year}
+            month={month}
+            changeMonth={this.changeMonth}
+            changeYear={this.changeYear}
+          />
+          <Calendar
+            month={month}
+            year={year}
+            weakDays={weakDays}
+            monthes={monthes}
+          />
+          <button
+            className="button-reset"
+            type="button"
+            onClick={this.resetToCurrentDate}
+          >
+            Current Month
+          </button>
+        </div>
+        <div className="list-of-months">
+          <select onChange={this.selected} className="list-of-months__select">
+            {selectBtn.map(
+              select => <option value={select} key={select}>{select}</option>,
+            )}
+          </select>
+          <Veiw
+            month={month}
+            year={year}
+            weakDays={weakDays}
+            monthes={monthes}
+            selectVeiw={selectVeiw}
+          />
+        </div>
       </div>
 
     );
