@@ -1,13 +1,24 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './Actions.scss';
 
 export class Actions extends Component {
+    static propTypes = {
+      changeYear: PropTypes.func.isRequired,
+      changeMonth: PropTypes.func.isRequired,
+      month: PropTypes.number.isRequired,
+      year: PropTypes.number.isRequired,
+      monthes: PropTypes.arrayOf(
+        PropTypes.string.isRequired,
+      ).isRequired,
+    }
+
     handleChange = (event) => {
-      this.props.changeYear(event.target.value);
+      this.props.changeYear(Number(event.target.value));
     }
 
     handleMonthChange = (event) => {
-      this.props.changeMonth(event.target.value);
+      this.props.changeMonth(Number(event.target.value));
     }
 
     handlePrev = () => {
@@ -21,9 +32,9 @@ export class Actions extends Component {
       }
     }
 
-
       handleNext = () => {
-        const {month, year} = this.props;
+
+        const { month, year } = this.props;
 
         if (month === 12) {
           this.props.changeYear(year + 1);
@@ -43,12 +54,12 @@ export class Actions extends Component {
               onChange={this.handleMonthChange}
               className="action__select"
             >
-              {monthes.map((month, index) => (
-                <option value={index+1}>{month}</option>
+              {monthes.map((mon, index) => (
+                <option value={index + 1} key={mon}>{mon}</option>
               ))}
             </select>
             <input
-              type='number'
+              type="number"
               value={year}
               onChange={this.handleChange}
               className="action__input"
