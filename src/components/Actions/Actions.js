@@ -33,6 +33,7 @@ export class Actions extends Component {
     }
 
       handleNext = () => {
+
         const { month, year } = this.props;
 
         if (month === 12) {
@@ -78,7 +79,6 @@ export class Actions extends Component {
               {`>`}
             </button>
           </div>
-
         );
       }
 }
