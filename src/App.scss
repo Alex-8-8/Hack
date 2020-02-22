@@ -1,7 +1,24 @@
-.App {
-  text-align: center;
-}
-
 * {
   box-sizing: border-box;
+}
+
+.App {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  justify-content: center;
+  padding: 10px;
+}
+
+.list-of-months {
+  align-items: center;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, (100%/3));
+  row-gap: 50px;
+}
+
+.current-month {
+  margin: 150px 40px 0;
+  max-width: 350px;
 }

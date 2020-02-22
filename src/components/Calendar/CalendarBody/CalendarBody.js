@@ -23,7 +23,7 @@ const CalendarBody = ({ month, year }) => {
   }
 
   return (
-    <>
+    <div className="calendar-section">
       {emptyCells.map(
         day => <div key={day} className="calendar__cell">{' '}</div>,
       )}
@@ -37,7 +37,7 @@ const CalendarBody = ({ month, year }) => {
       {endEmptyCells.map(
         day => <div key={day} className="calendar__cell">{' '}</div>,
       )}
-    </>
+    </div>
   );
 };
 
