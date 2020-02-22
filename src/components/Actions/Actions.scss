@@ -1,0 +1,15 @@
+.action {
+    text-align: start;
+    margin: 10px 0;
+    &__select,
+    &__input {
+        width: 250px;
+        height: 40px;
+        font-size: 24px;
+        margin-right: 10px;
+        padding-left: 20px;
+    }
+    &__select {
+        background-color: #b8b4fa;
+    }
+}
