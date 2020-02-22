@@ -8,6 +8,11 @@ const CalendarBody = ({ month, year }) => {
   const monthdays = Array.from({ length: [daysNumber] }, (item, index) => index + 1);
   let fistDayOfWeek = new Date(`${year}-${month}-01`).getDay();
   const emptyCells = Array.from({ length: [fistDayOfWeek - 1] }, (item, index) => index + 1);
+  const fullWeek = Math.floor((daysNumber - fistDayOfWeek - 1) / 7);
+  console.log(fullWeek);
+  const restDays = 7 - (daysNumber - fullWeek * 7 - (fistDayOfWeek - 1));
+  console.log(restDays);
+  const endEmptyCells = Array.from({ length: [fistDayOfWeek - 1] }, (item, index) => index + 1);
 
   if (fistDayOfWeek === 0) {
     fistDayOfWeek = 7;
