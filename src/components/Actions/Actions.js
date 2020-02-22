@@ -8,9 +8,11 @@ export class Actions extends Component {
     }
 
     handleChange = (event) => {
+        const { inputedYear } = this.state;
         this.setState({
             inputedYear: Number(event.target.value),
         })
+        this.props.changeYear(inputedYear);
     }
 
     handleEnter = (event) => {
