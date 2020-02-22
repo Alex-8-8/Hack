@@ -12,12 +12,11 @@ const dateNow = new Date();
 
 export default class App extends React.Component {
   state = {
-    month: dateNow.getMonth(),
+    month: dateNow.getMonth() + 1,
     year: dateNow.getFullYear(),
   }
 
   render() {
-    console.log(weakDays);
     const { month, year } = this.state;
 
     return (

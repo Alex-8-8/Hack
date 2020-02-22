@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CalendarHeader from './CalendarHeader/CalendarHeader';
-import CalendarBody from './CalendarBody';
+import CalendarBody from './CalendarBody/CalendarBody';
 
 import './Calendar.scss';
 
 const Calendar = ({ month, year, weakDays, monthes }) => (
-  <table className="calendar">
-    <CalendarHeader weakDays={weakDays} monthes={monthes} />
+  <div className="calendar">
+    <CalendarHeader weakDays={weakDays} />
     <CalendarBody month={month} year={year} />
-  </table>
+  </div>
 );
 
 Calendar.propTypes = {

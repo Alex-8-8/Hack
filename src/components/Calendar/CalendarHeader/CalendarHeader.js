@@ -5,11 +5,9 @@ import PropTypes from 'prop-types';
 
 const CalendarHeader = ({ weakDays }) => (
 
-  <thead className="calendar__head">
-    <tr>
-      {weakDays.map(day => <th>{day}</th>)}
-    </tr>
-  </thead>
+  <div className="calendar__head">
+    {weakDays.map(day => <div key={day} className="calendar__cell">{day}</div>)}
+  </div>
 );
 
 CalendarHeader.propTypes = {
