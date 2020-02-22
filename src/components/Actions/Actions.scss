@@ -1,0 +1,43 @@
+.action {
+  text-align: center;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__select,
+  &__input {
+    outline: none;
+    border: 1px solid #000;
+    border-radius: 25px;
+    max-width: 125px;
+    height: 40px;
+    font-size: 20px;
+    // margin-right: 15px;
+    text-align: center;
+    padding-left: 15px;
+  }
+  // &__input {
+  //   // width: 150px;
+  // }
+  &__select {
+    background-color: #b8b4fa;
+  }
+  &__button {
+    outline: none;
+    width: 25px;
+    line-height: 25px;
+    background-color: #b8b4fa;
+    font-size: 20px;
+    border-radius: 25px;
+    text-align: center;
+    border: 1px solid #000;
+  }
+  // &__button:nth-child(2) {
+  //   border-top-left-radius: 25px;
+  //   border-bottom-left-radius: 25px;
+  // }
+  // &__button:nth-child(4) {
+  //   border-top-right-radius: 25px;
+  //   border-bottom-right-radius: 25px;
+  // }
+}

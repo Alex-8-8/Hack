@@ -2,6 +2,7 @@ import React from 'react';
 import './App.scss';
 import Calendar from './components/Calendar/Calendar';
 import { Year } from './components/Year/Year';
+import { Actions } from './components/Actions/Actions';
 
 const weakDays = ['mon', 'tue', 'wed', 'thurs', 'fri', 'sat', 'sun'];
 const monthes = [
@@ -17,18 +18,45 @@ export default class App extends React.Component {
     year: dateNow.getFullYear(),
   }
 
+  changeMonth = (month) => {
+    this.setState({
+      month,
+    })
+  }
+
+  changeYear = (year) => {
+    this.setState({
+      year,
+    })
+  }
+
+  resetToCurrentDate = () => {
+    this.setState({
+      month: dateNow.getMonth() + 1,
+      year: dateNow.getFullYear(),
+    })
+  }
+
   render() {
     const { month, year } = this.state;
 
     return (
       <div className="App">
         <div className="current-month">
+        <Actions monthes={monthes} year={year} month={month} changeMonth={this.changeMonth} changeYear={this.changeYear}/>
           <Calendar
             month={month}
             year={year}
             weakDays={weakDays}
             monthes={monthes}
           />
+          <button
+          className="button-reset"
+          type="button"
+          onClick={this.resetToCurrentDate}
+        >
+          Current Month
+        </button>
         </div>
         <div className="list-of-months">
           <Year
@@ -37,6 +65,9 @@ export default class App extends React.Component {
             weekDays={weakDays}
           />
         </div>
+
+
+
       </div>
 
     );
