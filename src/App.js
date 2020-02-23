@@ -128,6 +128,7 @@ export default class App extends React.Component {
           >
             Current Month
           </button>
+          <NoteList notes={notes} />
         </div>
         <div className="list-of-months">
           <select onChange={this.selected} className="list-of-months__select">
@@ -154,8 +155,6 @@ export default class App extends React.Component {
             onAddNote={this.addNote}
           />
         )}
-        <NoteList notes={notes} />
-
       </div>
     );
   }
