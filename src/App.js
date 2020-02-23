@@ -5,6 +5,7 @@ import NoteList from './components/NoteList/NoteList';
 import Calendar from './components/Calendar/Calendar';
 import { Actions } from './components/Actions/Actions';
 import AddNote from './components/AddNote/AddNote';
+import NoteSearch from './components/NotesSearch/NoteSearch';
 
 const weakDays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 const monthes = [
@@ -34,6 +35,14 @@ if (dayOfWeek === 0) {
   dayOfWeek = 7;
 }
 
+const filterNotes = (notes, filter) => {
+  const filterToLowerCase = filter.toLowerCase();
+
+  return notes.filter(
+    note => note.toLowerCase().includes(filterToLowerCase),
+  );
+};
+
 export default class App extends React.Component {
   state = {
     month: dateNow.getMonth() + 1,
@@ -43,6 +52,7 @@ export default class App extends React.Component {
     notes: [],
     date: today,
     neededDayOfWeek: dayOfWeek,
+    query: '',
   };
 
   componentDidMount() {
@@ -108,10 +118,18 @@ export default class App extends React.Component {
     });
   };
 
+  handleSearch = (e) => {
+    this.setState({
+      query: e.target.value,
+    });
+  }
+
   resetToCurrentDate = () => {
     this.setState({
       month: dateNow.getMonth() + 1,
       year: dateNow.getFullYear(),
+      date: dateNow.getDate(),
+      neededDayOfWeek: dayOfWeek,
     });
   };
 
@@ -130,7 +148,9 @@ export default class App extends React.Component {
       notes,
       date,
       neededDayOfWeek,
+      query,
     } = this.state;
+    const filteredNotes = filterNotes(notes, query);
 
     return (
       <div className="App">
@@ -158,7 +178,8 @@ export default class App extends React.Component {
           >
             Current Month
           </button>
-          <NoteList notes={notes} onDelete={this.deleteNote} />
+          <NoteSearch onChangeFilter={this.handleSearch} />
+          <NoteList notes={filteredNotes} onDelete={this.deleteNote} />
         </div>
         <div className="list-of-months">
           <select onChange={this.selected} className="list-of-months__select">

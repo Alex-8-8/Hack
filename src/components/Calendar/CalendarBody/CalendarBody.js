@@ -49,10 +49,17 @@ const CalendarBody = ({ month, year, onChange, getDay }) => {
 };
 
 CalendarBody.propTypes = {
-  month: PropTypes.number.isRequired,
-  year: PropTypes.number.isRequired,
-  onChange: PropTypes.func.isRequired,
-  getDay: PropTypes.func.isRequired,
+  month: PropTypes.number,
+  year: PropTypes.number,
+  onChange: PropTypes.func,
+  getDay: PropTypes.func,
+};
+
+CalendarBody.defaultProps = {
+  month: null,
+  year: null,
+  onChange: () => {},
+  getDay: () => {},
 };
 
 export default CalendarBody;
