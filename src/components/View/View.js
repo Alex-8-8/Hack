@@ -33,6 +33,7 @@ export const Veiw = (
     return (
       monthes.map((monthElement, i) => (
         <div key={monthElement}>
+          <h3>{monthElement}</h3>
           <Calendar
             month={i + 1}
             year={year}
