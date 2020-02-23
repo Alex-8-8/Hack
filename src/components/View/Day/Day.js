@@ -8,21 +8,22 @@ export const Day = ({ date, neededDayOfWeek, weakDays }) => {
 
   return (
     <>
-    <h3>
-    {date} {weakDays[neededDayOfWeek-1]}
-    </h3>
-    <ul className="day-list">
-      {arrOfHours.map(hour => (
-        <li key={hour + 1} className="day-list__item">
-          <span className="day-list__hour">
-            {hour}
+      <div className="selected-day">
+        <div className="selected-day__date">{date}</div>
+        <div className="selected-day__day-of-week">{weakDays[neededDayOfWeek - 1]}</div>
+      </div>
+      <ul className="day-list">
+        {arrOfHours.map(hour => (
+          <li key={hour + 1} className="day-list__item">
+            <span className="day-list__hour">
+              {hour}
             :
             00
-          </span>
-          <input className="day-list__input"></input>
-        </li>
-      ))}
-    </ul>
+            </span>
+            <input className="day-list__input" />
+          </li>
+        ))}
+      </ul>
     </>
   )
 }
