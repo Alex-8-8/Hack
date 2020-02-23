@@ -5,7 +5,9 @@ import CalendarBody from './CalendarBody/CalendarBody';
 
 import './Calendar.scss';
 
-const Calendar = ({ month, year, weakDays, getDay, selectDay, monthes, onChange }) => (
+const Calendar = (
+  { month, year, weakDays, getDay, selectDay, monthes, onChange },
+) => (
   <div className="calendar">
     <CalendarHeader weakDays={weakDays} />
     <CalendarBody
