@@ -5,10 +5,15 @@ import CalendarBody from './CalendarBody/CalendarBody';
 
 import './Calendar.scss';
 
-const Calendar = ({ month, year, weakDays, monthes }) => (
+const Calendar = ({ month, year, weakDays, getDay, selectDay }) => (
   <div className="calendar">
     <CalendarHeader weakDays={weakDays} />
-    <CalendarBody month={month} year={year} />
+    <CalendarBody
+      month={month}
+      year={year}
+      getDay={getDay}
+      selectDay={selectDay}
+    />
   </div>
 );
 
@@ -18,9 +23,8 @@ Calendar.propTypes = {
   weakDays: PropTypes.arrayOf(
     PropTypes.string.isRequired,
   ).isRequired,
-  monthes: PropTypes.arrayOf(
-    PropTypes.string.isRequired,
-  ).isRequired,
+  selectDay: PropTypes.number.isRequired,
+  getDay: PropTypes.func.isRequired,
 };
 
 export default Calendar;
