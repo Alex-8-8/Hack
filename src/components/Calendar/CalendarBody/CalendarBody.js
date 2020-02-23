@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './CalendarBody.scss';
 
-const CalendarBody = ({ month, year, onChange }) => {
+const CalendarBody = ({ month, year, onChange, getDay }) => {
   const daysNumber = new Date(year, month, 0).getDate();
   const monthdays = Array.from(
     { length: [daysNumber] }, (item, index) => index + 1,
@@ -29,9 +29,16 @@ const CalendarBody = ({ month, year, onChange }) => {
       )}
       {monthdays.map(
         (day, index) => (
-          <div id={index + 1} key={day} className="calendar__cell" onClick={onChange}>
+          <button
+            type="button"
+            id={index + 1}
+            key={day}
+            className="calendar__cell"
+            onClick={onChange}
+            onDoubleClick={e => getDay(e.target.id)}
+          >
             {day}
-          </div>
+          </button>
         ),
       )}
       {endEmptyCells.map(
@@ -44,6 +51,7 @@ const CalendarBody = ({ month, year, onChange }) => {
 CalendarBody.propTypes = {
   month: PropTypes.number.isRequired,
   year: PropTypes.number.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default CalendarBody;

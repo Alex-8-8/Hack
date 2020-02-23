@@ -5,17 +5,10 @@ import CalendarHeader from '../Calendar/CalendarHeader/CalendarHeader';
 import { Day } from './Day/Day';
 import './View.scss';
 
-export const Veiw = ({
-  month,
-  year,
-  weakDays,
-  monthes,
-  selectVeiw,
-  date,
-  neededDayOfWeek,
-}) => {
+export const Veiw = (
+  { month, year, weakDays, monthes, selectVeiw, date, neededDayOfWeek },
+) => {
   if (selectVeiw === 'Day') {
-
     return (
       <Day
         date={date}
@@ -52,17 +45,22 @@ export const Veiw = ({
   }
 
   if (selectVeiw === 'Week') {
+    const daysNumber = new Date(year, month, 0).getDate();
     const startWeek = date - (neededDayOfWeek - 1);
     const needWeek = Array.from(
       { length: 7 }, (item, index) => index,
-    ).map(day => day + startWeek);
+    ).map(day => (
+      day + startWeek > 0 && day + startWeek <= daysNumber
+        ? day + startWeek
+        : ''
+    ));
 
     return (
       <div className="calendar calendar-week">
         <CalendarHeader weakDays={weakDays} />
         <div className="calendar__week">
-          {needWeek.map(day => (
-            <div key={day} className="calendar__cell">
+          {needWeek.map((day, index) => (
+            <div key={String(index)} className="calendar__cell">
               {day}
             </div>
           ))}
@@ -84,4 +82,6 @@ Veiw.propTypes = {
     PropTypes.string.isRequired,
   ).isRequired,
   selectVeiw: PropTypes.string.isRequired,
+  date: PropTypes.number.isRequired,
+  neededDayOfWeek: PropTypes.number.isRequired,
 };

@@ -14,12 +14,20 @@
 
 .calendar__cell {
   border-radius: 50%;
-  font-size: 14px;
+  font-size: 12px;
+  background-color: transparent;
+  border: none;
   max-width: 50px;
   color: #0404a7;
   line-height: 50px;
   transition: all 0.3s ease-in-out;
   &:hover {
+    cursor: pointer;
+    background-color: #ccc;
+    font-weight: bold;
+  }
+  &:focus {
+    outline: none;
     cursor: pointer;
     background-color: #ccc;
     font-weight: bold;

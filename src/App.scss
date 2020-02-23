@@ -36,8 +36,28 @@
 }
 
 .current-month {
+  position: relative;
   margin: 21px 40px 0;
   max-width: 350px;
+  &__form {
+    position: absolute;
+    left: 50px;
+    & span {
+      font-size: 18px;
+    }
+    & input {
+      font-size: 15px;
+    }
+    & button {
+      margin-left: 5px;
+      font-size: 15px;
+      background: #9993ed;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      border-radius: 3px;
+    }
+  }
 }
 
 .button-reset {
