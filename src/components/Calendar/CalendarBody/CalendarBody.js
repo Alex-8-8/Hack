@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './CalendarBody.scss';
 
@@ -52,6 +52,7 @@ CalendarBody.propTypes = {
   month: PropTypes.number.isRequired,
   year: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired,
+  getDay: PropTypes.func.isRequired,
 };
 
 export default CalendarBody;

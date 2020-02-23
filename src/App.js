@@ -1,30 +1,30 @@
-import React from "react";
-import "./App.scss";
-import { Veiw } from "./components/View/View";
-import NoteList from "./components/NoteList/NoteList";
-import Calendar from "./components/Calendar/Calendar";
-import { Actions } from "./components/Actions/Actions";
-import AddNote from "./components/AddNote/AddNote";
+import React from 'react';
+import './App.scss';
+import { Veiw } from './components/View/View';
+import NoteList from './components/NoteList/NoteList';
+import Calendar from './components/Calendar/Calendar';
+import { Actions } from './components/Actions/Actions';
+import AddNote from './components/AddNote/AddNote';
 
-const weakDays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+const weakDays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 const monthes = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December"
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
 ];
-const selectBtn = ["Day", "Week", "Month", "Year"];
+const selectBtn = ['Day', 'Week', 'Month', 'Year'];
 
 const dateNow = new Date();
-let today = new Date().toDateString().split(" ");
+let today = new Date().toDateString().split(' ');
 
 today = Number(today[today.length - 2]);
 
@@ -38,15 +38,15 @@ export default class App extends React.Component {
   state = {
     month: dateNow.getMonth() + 1,
     year: dateNow.getFullYear(),
-    selectVeiw: "Day",
-    selectDay: null,
+    selectVeiw: 'Day',
+    selectDay: new Date().getDate(),
     notes: [],
     date: today,
-    neededDayOfWeek: dayOfWeek
+    neededDayOfWeek: dayOfWeek,
   };
 
   componentDidMount() {
-    const persistedNotes = localStorage.getItem("notes");
+    const persistedNotes = localStorage.getItem('notes');
 
     if (persistedNotes) {
       const notes = JSON.parse(persistedNotes);
@@ -57,43 +57,43 @@ export default class App extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.notes !== this.state.notes) {
-      localStorage.setItem("notes", JSON.stringify(this.state.notes));
+      localStorage.setItem('notes', JSON.stringify(this.state.notes));
     }
   }
 
-  getDay = id => {
+  getDay = (id) => {
     this.setState({
-      selectDay: id
+      selectDay: id,
     });
   };
 
-  addNote = note => {
+  addNote = (note) => {
     this.setState(prevState => ({
-      notes: [...prevState.notes, note]
+      notes: [...prevState.notes, note],
     }));
   };
 
-  selected = event => {
+  selected = (event) => {
     const veiw = event.target.value;
 
     this.setState({
-      selectVeiw: veiw
+      selectVeiw: veiw,
     });
   };
 
-  changeMonth = month => {
+  changeMonth = (month) => {
     this.setState({
-      month
+      month,
     });
   };
 
-  changeYear = year => {
+  changeYear = (year) => {
     this.setState({
-      year
+      year,
     });
   };
 
-  changeDate = event => {
+  changeDate = (event) => {
     const { month, year } = this.state;
     const date = Number(event.target.id);
     let currentDate = Number(new Date(year, month - 1, +date).getDay());
@@ -104,20 +104,20 @@ export default class App extends React.Component {
 
     this.setState({
       date,
-      neededDayOfWeek: currentDate
+      neededDayOfWeek: currentDate,
     });
   };
 
   resetToCurrentDate = () => {
     this.setState({
       month: dateNow.getMonth() + 1,
-      year: dateNow.getFullYear()
+      year: dateNow.getFullYear(),
     });
   };
 
-  deleteNote = current => {
+  deleteNote = (current) => {
     this.setState(prevState => ({
-      notes: prevState.notes.filter(note => note !== current)
+      notes: prevState.notes.filter(note => note !== current),
     }));
   };
 
@@ -129,7 +129,7 @@ export default class App extends React.Component {
       selectDay,
       notes,
       date,
-      neededDayOfWeek
+      neededDayOfWeek,
     } = this.state;
 
     return (
@@ -148,7 +148,7 @@ export default class App extends React.Component {
             weakDays={weakDays}
             monthes={monthes}
             getDay={this.getDay}
-            selectDay={selectDay}
+            selectDay={+selectDay}
             onChange={this.changeDate}
           />
           <button
@@ -178,15 +178,12 @@ export default class App extends React.Component {
             neededDayOfWeek={neededDayOfWeek}
           />
         </div>
-
-        {selectDay && (
-          <AddNote
-            selectDay={selectDay}
-            month={monthes[month - 1]}
-            year={year}
-            onAddNote={this.addNote}
-          />
-        )}
+        <AddNote
+          selectDay={+selectDay}
+          month={monthes[month - 1]}
+          year={year}
+          onAddNote={this.addNote}
+        />
       </div>
     );
   }
