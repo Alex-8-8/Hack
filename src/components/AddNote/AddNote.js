@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class AddNote extends Component {
+  static propTypes = {
+    selectDay: PropTypes.number.isRequired,
+    month: PropTypes.number.isRequired,
+    year: PropTypes.number.isRequired,
+    onAddNote: PropTypes.func.isRequired,
+  }
+
  state = {
    inputText: '',
  }
@@ -29,14 +37,13 @@ export default class AddNote extends Component {
    return (
      <>
        <form onSubmit={this.handleSubmit}>
-         <span>
-           {selectDay}
-           {' '}
-           {month}
-           {' '}
-           {year}
-         </span>
-         <input type="text" value={inputText} placeholder="input task..." onChange={this.handleChange} />
+         <span>{`${selectDay} ${month} ${year}`}</span>
+         <input
+           type="text"
+           value={inputText}
+           placeholder="input task..."
+           onChange={this.handleChange}
+         />
          <button type="submit">Add</button>
        </form>
 
