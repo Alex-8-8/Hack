@@ -29,9 +29,15 @@ Calendar.propTypes = {
   monthes: PropTypes.arrayOf(
     PropTypes.string.isRequired,
   ).isRequired,
-  onChange: PropTypes.func.isRequired,
-  selectDay: PropTypes.number.isRequired,
-  getDay: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
+  selectDay: PropTypes.number,
+  getDay: PropTypes.func,
+};
+
+Calendar.defaultProps = {
+  onChange: () => {},
+  selectDay: null,
+  getDay: () => {},
 };
 
 export default Calendar;
