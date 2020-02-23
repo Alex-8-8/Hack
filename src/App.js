@@ -1,9 +1,10 @@
 import React from 'react';
 import './App.scss';
 import { Veiw } from './components/View/View';
-
+import NoteList from './components/NoteList/NoteList';
 import Calendar from './components/Calendar/Calendar';
 import { Actions } from './components/Actions/Actions';
+import AddNote from './components/AddNote/AddNote';
 
 const weakDays = ['mon', 'tue', 'wed', 'thurs', 'fri', 'sat', 'sun'];
 const monthes = [
@@ -28,8 +29,22 @@ export default class App extends React.Component {
     month: dateNow.getMonth() + 1,
     year: dateNow.getFullYear(),
     selectVeiw: 'Day',
+    selectDay: null,
+    notes: [],
     date: today,
     neededDayOfWeek: dayOfWeek,
+  }
+
+  getDay = (id) => {
+    this.setState({
+      selectDay: id,
+    });
+  }
+
+  addNote = (note) => {
+    this.setState(prevState => ({
+      notes: [...prevState.notes, note],
+    }));
   }
 
   selected = (event) => {
@@ -53,9 +68,10 @@ export default class App extends React.Component {
   }
 
   changeDate = (event) => {
+    const { year, month } = this.state;
     const date = event.target.id;
     let currentDate = new Date(
-      this.state.year, this.state.month - 1, +date,
+      year, month - 1, +date,
     ).getDay();
 
     if (currentDate === 0) {
@@ -76,7 +92,15 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { month, year, selectVeiw, date, neededDayOfWeek } = this.state;
+    const {
+      month,
+      year,
+      selectVeiw,
+      selectDay,
+      notes,
+      date,
+      neededDayOfWeek,
+    } = this.state;
 
     return (
       <div className="App">
@@ -93,6 +117,8 @@ export default class App extends React.Component {
             year={year}
             weakDays={weakDays}
             monthes={monthes}
+            getDay={this.getDay}
+            selectDay={selectDay}
             onChange={this.changeDate}
           />
           <button
@@ -119,8 +145,18 @@ export default class App extends React.Component {
             neededDayOfWeek={neededDayOfWeek}
           />
         </div>
-      </div>
 
+        {selectDay && (
+          <AddNote
+            selectDay={selectDay}
+            month={monthes[month - 1]}
+            year={year}
+            onAddNote={this.addNote}
+          />
+        )}
+        <NoteList notes={notes} />
+
+      </div>
     );
   }
 }
