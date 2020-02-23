@@ -24,6 +24,10 @@ Calendar.propTypes = {
   weakDays: PropTypes.arrayOf(
     PropTypes.string.isRequired,
   ).isRequired,
+  monthes: PropTypes.arrayOf(
+    PropTypes.string.isRequired,
+  ).isRequired,
+  onChange: PropTypes.func.isRequired,
   selectDay: PropTypes.number.isRequired,
   getDay: PropTypes.func.isRequired,
 };
