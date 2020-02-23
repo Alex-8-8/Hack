@@ -36,8 +36,8 @@ export default class AddNote extends Component {
 
    return (
      <>
-       <form onSubmit={this.handleSubmit}>
-         <span>{`${selectDay} ${month} ${year}`}</span>
+       <form onSubmit={this.handleSubmit} className="current-month__form">
+         <span>{`${selectDay} ${month} ${year} `}</span>
          <input
            type="text"
            value={inputText}
@@ -46,7 +46,6 @@ export default class AddNote extends Component {
          />
          <button type="submit">Add</button>
        </form>
-
      </>
    );
  }
