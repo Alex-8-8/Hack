@@ -6,10 +6,13 @@ import CalendarBody from './CalendarBody/CalendarBody';
 import './Calendar.scss';
 
 const Calendar = ({ month, year, weakDays, monthes }) => (
-  <div className="calendar">
-    <CalendarHeader weakDays={weakDays} />
-    <CalendarBody month={month} year={year} />
-  </div>
+  <>
+    <div className="calendar">
+      <h3 className="calendar__title">{monthes[month - 1]}</h3>
+      <CalendarHeader weakDays={weakDays} />
+      <CalendarBody month={month} year={year} />
+    </div>
+  </>
 );
 
 Calendar.propTypes = {

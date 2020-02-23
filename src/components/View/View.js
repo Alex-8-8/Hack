@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Calendar from '../Calendar/Calendar';
 import CalendarHeader from '../Calendar/CalendarHeader/CalendarHeader';
+import { Day } from '../Day/Day';
 import './View.scss';
 
 export const Veiw = ({ month, year, weakDays, monthes, selectVeiw }) => {
   if (selectVeiw === 'Day') {
     return (
-      <Calendar
+      <Day
         month={month}
         year={year}
         weakDays={weakDays}

@@ -3,7 +3,6 @@ import './App.scss';
 import { Veiw } from './components/View/View';
 
 import Calendar from './components/Calendar/Calendar';
-import { Year } from './components/Year/Year';
 import { Actions } from './components/Actions/Actions';
 
 const weakDays = ['mon', 'tue', 'wed', 'thurs', 'fri', 'sat', 'sun'];
@@ -54,12 +53,6 @@ export default class App extends React.Component {
 
     return (
       <div className="App">
-      {/* <select onChange={this.selected}>
-          {selectBtn.map(
-            select => <option value={select} key={select}>{select}</option>,
-          )}
-        </select> */}
-
         <div className="current-month">
           <Actions
             monthes={monthes}
