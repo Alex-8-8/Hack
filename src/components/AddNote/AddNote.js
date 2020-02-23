@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export default class AddNote extends Component {
   static propTypes = {
     selectDay: PropTypes.number.isRequired,
-    month: PropTypes.number.isRequired,
+    month: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
     onAddNote: PropTypes.func.isRequired,
   }

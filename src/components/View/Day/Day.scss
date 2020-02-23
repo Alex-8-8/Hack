@@ -26,3 +26,35 @@
     border: none;
   }
 }
+.selected-day {
+  display: inline-block;
+  width: 75px;
+  text-align: center;
+  margin: 0 auto;
+  &__date {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  &__day-of-week {
+    font-size: 34px;
+    width: 75px;
+    height: 75px;
+    line-height: 70px;
+    border-radius: 50%;
+    background: #9993ed;
+  }
+  &__day-of-week:hover {
+    color: #eec01a;
+    background-color: #7c74fc;
+  }
+}
+@media (max-width: 1650px) {
+  .day-list {
+    width: 60%;
+  }
+}
+@media (max-width: 1250px) {
+  .day-list {
+    width: 100%;
+  }
+}

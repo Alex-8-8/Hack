@@ -17,5 +17,5 @@ SelectView.propTypes = {
   selectBtn: PropTypes.arrayOf(
     PropTypes.string.isRequired,
   ).isRequired,
-  selected: PropTypes.func.isRequired,
+  select: PropTypes.func.isRequired,
 };

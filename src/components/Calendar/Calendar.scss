@@ -1,15 +1,27 @@
 .calendar {
-  max-width: 352px;
+  width: 390px;
   border-top: 1px solid #b8b4fa;
   border-left: 1px solid #b8b4fa;
   border-radius: 10px;
-  padding: 5px;
-  min-height: 362px;
+  padding: 5px 15px;
+  min-height: 420px;
   box-shadow: 5px 5px 5px #b8b4fa;
-  background-color: #fef7d1;
+  background: linear-gradient(#fef7d1, #f0dd97 100%);
+  &__title {
+    width: 352px;
+  }
 }
 
 .calendar-section {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+}
+
+@media (max-width: 450px) {
+  .calendar {
+    width: 250px;
+    margin-left: 25px;
+    min-height: 300px;
+    padding-top: 15px;
+  }
 }
