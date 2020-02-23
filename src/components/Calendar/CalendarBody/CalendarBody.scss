@@ -15,11 +15,19 @@
 .calendar__cell {
   border-radius: 50%;
   font-size: 12px;
+  background-color: #fef7d1;
+  outline: 0;
+  border: none;
   max-width: 50px;
   color: #0404a7;
   line-height: 50px;
   transition: all 0.3s ease-in-out;
   &:hover {
+    cursor: pointer;
+    background-color: #ccc;
+    font-weight: bold;
+  }
+  &:focus {
     cursor: pointer;
     background-color: #ccc;
     font-weight: bold;

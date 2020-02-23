@@ -29,9 +29,15 @@ const CalendarBody = ({ month, year, onChange }) => {
       )}
       {monthdays.map(
         (day, index) => (
-          <div id={index + 1} key={day} className="calendar__cell" onClick={onChange}>
+          <button
+            type="button"
+            id={index + 1}
+            key={day}
+            className="calendar__cell"
+            onClick={onChange}
+          >
             {day}
-          </div>
+          </button>
         ),
       )}
       {endEmptyCells.map(
@@ -44,6 +50,7 @@ const CalendarBody = ({ month, year, onChange }) => {
 CalendarBody.propTypes = {
   month: PropTypes.number.isRequired,
   year: PropTypes.number.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default CalendarBody;

@@ -53,10 +53,11 @@ export default class App extends React.Component {
   }
 
   changeDate = (event) => {
-    const date = event.target.id;
-    let currentDate = new Date(
-      this.state.year, this.state.month - 1, +date,
-    ).getDay();
+    const { month, year } = this.state;
+    const date = Number(event.target.id);
+    let currentDate = Number(new Date(
+      year, month - 1, +date,
+    ).getDay());
 
     if (currentDate === 0) {
       currentDate = 7;

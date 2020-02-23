@@ -21,6 +21,7 @@ Calendar.propTypes = {
   monthes: PropTypes.arrayOf(
     PropTypes.string.isRequired,
   ).isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default Calendar;
