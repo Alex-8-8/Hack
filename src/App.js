@@ -13,12 +13,23 @@ const monthes = [
 const selectBtn = ['Day', 'Week', 'Month', 'Year'];
 
 const dateNow = new Date();
+let today = new Date().toDateString().split(' ');
+
+today = Number(today[today.length - 2]);
+
+let dayOfWeek = new Date().getDay();
+
+if (dayOfWeek === 0) {
+  dayOfWeek = 7;
+}
 
 export default class App extends React.Component {
   state = {
     month: dateNow.getMonth() + 1,
     year: dateNow.getFullYear(),
     selectVeiw: 'Day',
+    date: today,
+    neededDayOfWeek: dayOfWeek,
   }
 
   selected = (event) => {
@@ -41,6 +52,22 @@ export default class App extends React.Component {
     });
   }
 
+  changeDate = (event) => {
+    const date = event.target.id;
+    let currentDate = new Date(
+      this.state.year, this.state.month - 1, +date,
+    ).getDay();
+
+    if (currentDate === 0) {
+      currentDate = 7;
+    }
+
+    this.setState({
+      date,
+      neededDayOfWeek: currentDate,
+    });
+  }
+
   resetToCurrentDate = () => {
     this.setState({
       month: dateNow.getMonth() + 1,
@@ -49,7 +76,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { month, year, selectVeiw } = this.state;
+    const { month, year, selectVeiw, date, neededDayOfWeek } = this.state;
 
     return (
       <div className="App">
@@ -66,6 +93,7 @@ export default class App extends React.Component {
             year={year}
             weakDays={weakDays}
             monthes={monthes}
+            onChange={this.changeDate}
           />
           <button
             className="button-reset"
@@ -87,6 +115,8 @@ export default class App extends React.Component {
             weakDays={weakDays}
             monthes={monthes}
             selectVeiw={selectVeiw}
+            date={date}
+            neededDayOfWeek={neededDayOfWeek}
           />
         </div>
       </div>

@@ -3,6 +3,7 @@
 }
 
 .App {
+  font-family: "Raleway";
   text-align: center;
   display: grid;
   grid-template-columns: 1fr 3fr;
@@ -18,6 +19,7 @@
   grid-template-columns: repeat(auto-fill, (100%/3));
   row-gap: 50px;
   &__select {
+    font-family: "Raleway";
     position: absolute;
     width: 330px;
     height: 40px;
@@ -46,6 +48,7 @@
   height: 40px;
 
   font-size: 24px;
+  font-family: "Raleway";
 
   background-color: #9993ed;
   border-radius: 20px;
@@ -56,5 +59,33 @@
   &:hover {
     color: #eec01a;
     background-color: #7c74fc;
+  }
+}
+
+@media (max-width: 1850px) {
+  .list-of-months {
+    grid-template-columns: repeat(auto-fill, 40%);
+  }
+}
+
+@media (max-width: 1620px) {
+  .list-of-months {
+    grid-template-columns: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .App {
+    grid-template-columns: 1fr;
+    margin: 50px;
+  }
+  .list-of-month {
+    margin: 0;
+  }
+  .current-month {
+    max-width: 480px;
+    display: grid;
+    align-items: start;
+    justify-content: center;
   }
 }

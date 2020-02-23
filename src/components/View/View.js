@@ -2,17 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Calendar from '../Calendar/Calendar';
 import CalendarHeader from '../Calendar/CalendarHeader/CalendarHeader';
-import { Day } from '../Day/Day';
+import { Day } from './Day/Day';
 import './View.scss';
 
-export const Veiw = ({ month, year, weakDays, monthes, selectVeiw }) => {
+export const Veiw = ({
+  month,
+  year,
+  weakDays,
+  monthes,
+  selectVeiw,
+  date,
+  neededDayOfWeek,
+}) => {
   if (selectVeiw === 'Day') {
+
     return (
       <Day
-        month={month}
-        year={year}
+        date={date}
+        neededDayOfWeek={neededDayOfWeek}
         weakDays={weakDays}
-        monthes={monthes}
       />
     );
   }
@@ -44,13 +52,7 @@ export const Veiw = ({ month, year, weakDays, monthes, selectVeiw }) => {
   }
 
   if (selectVeiw === 'Week') {
-    let today = new Date().toDateString().split(' ');
-
-    today = Number(today[today.length - 2]);
-
-    // let dayOfWeek = new Date(year, month, today).getDay();
-    const dayOfWeek = new Date().getDay();
-    const startWeek = today - (dayOfWeek - 1);
+    const startWeek = date - (neededDayOfWeek - 1);
     const needWeek = Array.from(
       { length: 7 }, (item, index) => index,
     ).map(day => day + startWeek);
